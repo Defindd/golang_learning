@@ -24,9 +24,9 @@ func main() {
 	}
 	IsMultiple := GetMultipleFunction(10, 2, 3, GetAr)
 	if IsMultiple() {
-		println("Кратно")
+		println("Кратно!")
 	} else {
-		println("Не кратно")
+		println("Не кратно!")
 	}
 }
 
