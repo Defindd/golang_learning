@@ -22,8 +22,12 @@ func main() {
 	GetAr := func(x, y int16) int16 {
 		return x + y
 	}
-	IsMultiple := GetMultipleFunction(10, 2, 5, GetAr)
-	println(IsMultiple())
+	IsMultiple := GetMultipleFunction(10, 2, 3, GetAr)
+	if IsMultiple() {
+		println("Кратно")
+	} else {
+		println("Не кратно")
+	}
 }
 
 /*func SayHi(firstname, secondname string) (formatedString string, welcome string) {
@@ -32,9 +36,8 @@ func main() {
 	return
 }*/
 func GetMultipleFunction(a, b, divider int16, GetArythm func(x, y int16) int16) (DividerFunc func() bool) {
-	avrg := GetArythm(a, b)
 	DividerFunc = func() bool {
-		return avrg%divider == 0
+		return GetArythm(a, b)%divider == 0
 	}
 	return
 }
