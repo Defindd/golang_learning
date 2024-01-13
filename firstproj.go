@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 //var name string = "Nikita"
 
 func main() {
@@ -20,12 +16,25 @@ func main() {
 	fmt.Print("123")
 	fmt.Println("c\u00e1t")
 	var a rune = 128512
-	println(string(a))  */
+	println(string(a))
 	frm, wlc := SayHi("Nikita", "Prilukov")
-	fmt.Printf("%s,%s", frm, wlc)
+	fmt.Printf("%s,%s", frm, wlc)*/
+	GetAr := func(x, y int16) int16 {
+		return x + y
+	}
+	IsMultiple := GetMultipleFunction(10, 2, 5, GetAr)
+	println(IsMultiple())
 }
-func SayHi(firstname, secondname string) (formatedString string, welcome string) {
+
+/*func SayHi(firstname, secondname string) (formatedString string, welcome string) {
 	formatedString = fmt.Sprintf("Hi %q", firstname+" "+secondname)
 	welcome = "welcome to c1dy's ass"
+	return
+}*/
+func GetMultipleFunction(a, b, divider int16, GetArythm func(x, y int16) int16) (DividerFunc func() bool) {
+	avrg := GetArythm(a, b)
+	DividerFunc = func() bool {
+		return avrg%divider == 0
+	}
 	return
 }
