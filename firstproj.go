@@ -1,29 +1,30 @@
 package main
 
-import "fmt"
-
-const (
-	one = 1 + 2*iota
-	three
-	five
-	seven
-	nine
-	eleven
+import (
+	"bufio"
+	"fmt"
+	"os"
 )
 
 func main() {
-	a := 51
-	switch {
-	case a > 0:
-		if a%2 == 0 {
-			break
-		}
-		fmt.Println("Odd positive value received")
-		fallthrough
-	case a < 0:
-		fmt.Println("Negative value received")
+	// Получаем читателя пользовательского ввода
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Println("Interaction counter")
 
-	default:
-		fmt.Println("Default value handling")
+	cnt := 0
+	for {
+		fmt.Print("-> ")
+		// Считываем введённую пользователем строку. Программа ждёт, пока пользователь введёт строку
+		_, err := reader.ReadString('\n')
+		if err != nil {
+			panic(err)
+		}
+
+		GetStrNum(&cnt)
+
+		fmt.Printf("User input %d lines\n", cnt)
 	}
+}
+func GetStrNum(cnt *int) {
+	*cnt++
 }
