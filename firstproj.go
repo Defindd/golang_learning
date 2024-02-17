@@ -1,30 +1,29 @@
 package main
 
-import (
-	"fmt"
+import "fmt"
+
+const (
+	one = 1 + 2*iota
+	three
+	five
+	seven
+	nine
+	eleven
 )
 
-// var name string = "Nikita"
-type Person struct {
-	FirstName string
-	LastName  string
-}
-
-func (p *Person) Married(husband Person) {
-	p.LastName = husband.LastName
-}
-
-type WeekDay int32
-
 func main() {
-	const (
-		mon WeekDay = iota + 1
-		tue
-		wed
-		thu
-		fri
-		sat
-		sun
-	)
-	fmt.Println(mon, tue, thu, sun)
+	a := 51
+	switch {
+	case a > 0:
+		if a%2 == 0 {
+			break
+		}
+		fmt.Println("Odd positive value received")
+		fallthrough
+	case a < 0:
+		fmt.Println("Negative value received")
+
+	default:
+		fmt.Println("Default value handling")
+	}
 }
